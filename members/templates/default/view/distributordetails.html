@@ -1,0 +1,48 @@
+<div id="<?$_name?>">
+<div>
+	<h1>Hello <span style="text-transform: capitalize"><?fullname?> Distributor1 <?/?></span></h1>
+	<h3 align="right"> Your current role is as <?role?>Member<?/?></h3>
+</div>
+	<table width="100%" align="center" border="1" class="ui-widget">
+		<caption><h5>Your Current Legs Position</h5></caption>
+		<thead class="ui-widget-header">
+		<tr>
+			<th>
+				ID in your LegA<br/>
+			</th>
+			<th>
+				ID in your LegB<br/>
+			</th>
+			<th>
+				ID in your LegC<br/>
+			</th>
+			<th>
+				ID in your LegD<br/>
+			</th>
+		</tr>
+	</thead>
+	<tbody class="ui-widget-content" align="center">
+		<tr>
+			<td><?$LegA?></td><td><?$LegB?></td><td><?$LegC?></td><td><?$LegD?></td>
+		</tr>
+	</tbody>
+	</table>
+	<div class="atk-row" align="center">
+		<div style="float: left; margin-right: 100px">
+		<h3>Total Members in Your Down</h3>
+		<?$members_in_down?>
+		</div>
+		<div style="float: left;  margin-right: 100px">
+		<h3>Closing Agents in your Down</h3>
+		<?$closing_agents_in_down?>
+		</div>
+		<div style="float: left;  margin-right: 100px">
+		<h3>Total Agents in your Down</h3>
+		<?$total_agents_in_down?>
+		</div>
+	</div>
+
+	<?$Content?>
+	
+	<h5>Your Personal web page it at <a href="http://my.e-indian.name/?alias=<?$page_alias?>">my.e-indian.name/?alias=<?$page_alias?></a></h5>
+</div>
