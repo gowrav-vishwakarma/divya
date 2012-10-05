@@ -37,83 +37,51 @@ class page_closings_main extends Page {
 		$this->query("UPDATE
 						jos_xtreedetails
 					SET
-						Level_1_Income = Closing_1_Count * 500,
-						Level_2_Income = Closing_2_Count * 1000,
-						Level_3_Income = Closing_3_Count * 600
+						Level_1_Agent_Income = Closing_1_agent_count * 3000,
+						Level_2_Agent_Income = Closing_2_agent_count * 3000,
+						Level_3_Agent_Income = Closing_3_agent_count * 3000
 			");
 
-		//calculate performance bonus income (2 and 3rd) 
-
-		$this->query("UPDATE
-						jos_xtreedetails
-					SET
-						Performance_2_Bonus = 250000,
-						Performance_Given = 2
-					WHERE
-						is_level_2_completed=1 and Performance_Given = 0
-					");
-
-		$this->query("UPDATE
-						jos_xtreedetails
-					SET
-						Performance_2_Bonus = 1000000,
-						Performance_Given = 3
-					WHERE
-						is_level_3_completed=1 and Performance_Given <> 3
-					");
 
 		  //salary income
 		if($is_monthly){
 			$this->query("UPDATE
 							jos_xtreedetails
 						SET
-							Salary_1_Income = CASE 
-												WHEN Salary_1_months = 1 THEN 18000
-												WHEN Salary_1_months > 1 AND Salary_1_months < 11 THEN 9000
-												WHEN Salary_1_months = 11 THEN 11500
-											END,
-							Salary_1_months = Salary_1_months + 1
-
+							Salary_Income = 8000,
+							salary_month = salary_month  + 1
 						WHERE
-							is_level_2_completed = 1 AND
-							Salary_1_months between 1 and 11
+							Total_2_agent_count = 16 AND
+							salary_month between 1 and 12
 						");
+			// Royalty @TODO@ --
 
+			$new_dists=$this->add('Model_Distributor');
+			$new_dists->addCondition('is_new',true);
+			$new_count=$new_dists->count()->do_getOne();
+
+			$royaltyachievers = $this->add('Model_Distributor');
+			$royaltyachievers->addCondition('Total_2_agent_count',16);
+			$royaltyachievers_count = $royaltyachievers->count()->do_getOne();
+
+			if($royaltyachievers_count > 0)
+				$fundAmount=$new_count * 500 / $royaltyachievers_count;
+			else
+				$fundAmount=0;
 
 			$this->query("UPDATE
 							jos_xtreedetails
 						SET
-							Salary_2_Income = CASE 
-												WHEN Salary_2_months = 1 THEN 24000
-												WHEN Salary_2_months = 2 THEN 13500
-												WHEN Salary_2_months = 3 THEN 14500
-												WHEN Salary_2_months = 4 THEN 15500
-												WHEN Salary_2_months = 5 THEN 16500
-												WHEN Salary_2_months = 6 THEN 17500
-												WHEN Salary_2_months = 7 THEN 18500
-												WHEN Salary_2_months = 8 THEN 19500
-												WHEN Salary_2_months = 9 THEN 20500
-												WHEN Salary_2_months = 10 THEN 21500
-												WHEN Salary_2_months = 11 THEN 22500
-												WHEN Salary_2_months = 12 THEN 23500
-												WHEN Salary_2_months = 13 THEN 24500
-												WHEN Salary_2_months = 14 THEN 25500
-												WHEN Salary_2_months = 15 THEN 26500
-												WHEN Salary_2_months = 16 THEN 27500
-												WHEN Salary_2_months = 17 THEN 28500
-												WHEN Salary_2_months = 18 THEN 29500
-												WHEN Salary_2_months = 19 THEN 30500
-												WHEN Salary_2_months = 20 THEN 31500
-												WHEN Salary_2_months = 21 THEN 32500
-												WHEN Salary_2_months = 22 THEN 33500
-												WHEN Salary_2_months = 23 THEN 35700
-											END,
-							Salary_2_months = Salary_2_months + 1
-
+							Royalty_Income = $fundAmount
 						WHERE
-							is_level_3_completed = 1 AND
-							Salary_2_months between 1 and 23
-						");
+							Total_2_agent_count = 16
+				");
+
+			$this->query("UPDATE
+							jos_xtreedetails
+						SET
+							is_new = 0
+				");
 
 			}
 		  //Total income
@@ -121,7 +89,7 @@ class page_closings_main extends Page {
 			$this->query("UPDATE
 							jos_xtreedetails
 						SET
-							TotalAmount = Level_1_Income + Level_2_Income + Level_3_Income + Performance_2_Bonus + Performance_3_Bonus + Salary_1_Income + Salary_2_Income 
+							TotalAmount = 	Level_1_Agent_Income + Level_2_Agent_Income + Level_3_Agent_Income + Self_Agent_Income + 	Salary_Income + Royalty_Income  
 						");
 
 		//calculate TDS
@@ -163,16 +131,14 @@ class page_closings_main extends Page {
 						SELECT
 						0,
 						id,
-						Closing_1_Count,
-						Closing_2_Count,
-						Closing_3_Count,
-						Level_1_Income,
-						Level_2_Income,
-						Level_3_Income,
-						Performance_2_Bonus,
-						Performance_3_Bonus,
-						Salary_1_Income,
-						Salary_2_Income,
+						Closing_1_agent_count,
+						Closing_2_agent_count,
+						Closing_3_agent_count,
+						Level_1_Agent_Income,
+						Level_2_Agent_Income,
+						Level_3_Agent_Income,
+						Salary_Income,
+						Royalty_Income,
 						TotalAmount,
 						TDS,
 						AdminCharge,
@@ -187,16 +153,14 @@ class page_closings_main extends Page {
 			$this->query("UPDATE
 							jos_xtreedetails
 						SET
-							Closing_1_Count = 0,
-							Closing_2_Count = 0,
-							Closing_3_Count = 0,
-							Level_1_Income = 0,
-							Level_2_Income = 0,
-							Level_3_Income = 0,
-							Performance_2_Bonus = 0,
-							Performance_3_Bonus = 0,
-							Salary_1_Income = 0,
-							Salary_2_Income = 0,
+							Closing_1_agent_count = 0,
+							Closing_2_agent_count = 0,
+							Closing_3_agent_count = 0,
+							Level_1_Agent_Income = 0,
+							Level_2_Agent_Income = 0,
+							Level_3_Agent_Income = 0,
+							Salary_Income = 0,
+							Royalty_Income = 0,
 							TotalAmount = 0,
 							TDS = 0,
 							AdminCharge = 0,

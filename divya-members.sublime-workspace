@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"agen",
+				"agent_sp"
+			],
+			[
+				"Closing",
+				"Closing_1_agent_count"
+			],
+			[
 				"spon",
 				"sponsor_username"
 			],
@@ -75,6 +83,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "members/lib/Model/Distributor.php",
+			"settings":
+			{
+				"buffer_size": 4214,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -319,8 +335,36 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "members/lib/Model/Distributor.php",
+					"settings":
+					{
+						"buffer_size": 4214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3770,
+								3770
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1170.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -369,6 +413,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"model",
+				"lib/Model/Distributor.php"
+			],
 			[
 				"front",
 				"lib/Frontend.php"
@@ -876,10 +924,6 @@
 			[
 				"modelegall",
 				"lib/Model/LedgerAll.php"
-			],
-			[
-				"viewcrud",
-				"atk4/lib/View/CRUD.php"
 			]
 		],
 		"width": 0.0
@@ -889,6 +933,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"divyaadmin",
+				"/var/www/divya/divya-admin.sublime-project"
+			],
 			[
 				"eindme",
 				"/var/www/e-indian/e-indian-my.sublime-project"

@@ -13,15 +13,11 @@ class Model_Closings extends Model_Table{
 			$this->addField('Closing_1_Count');
 			$this->addField('Closing_2_Count');
 			$this->addField('Closing_3_Count');
-			$this->addField('Performance_2_Bonus');
-			$this->addField('Performance_3_Bonus');
-			$this->addField('Salary_1_Income');
-			$this->addField('Salary_2_Income');
+			$this->addField('Salary_Income');
+			$this->addField('Royalty_Income');
 			$this->addField('TotalAmount');
 			$this->addField('TDS');
 			$this->addField('AdminCharge');
 			$this->addField('NetAmount');
-		
-
 		}
 }

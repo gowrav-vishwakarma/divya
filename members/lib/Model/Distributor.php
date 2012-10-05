@@ -37,6 +37,7 @@ class Model_Distributor extends Model_Table{
 		$this->addField('Total_members_in_down');
 		$this->addField('Closing_1_agent_count');
 		$this->addField('Closing_2_agent_count');
+		$this->addField('Total_2_agent_count');
 		$this->addField('Closing_3_agent_count');
 		$this->addField('salary_month');
 		$this->addField('is_level_2_agents_completed');
@@ -68,42 +69,43 @@ class Model_Distributor extends Model_Table{
 			if($sponsor->loaded()){
 
 				$sponsor['Total_members_in_down'] = $sponsor['Total_members_in_down'] + 1;
-				// path
+				// @TODO@ -- path
 				if($sponsor['Total_members_in_down']==4){
-					$sponsor['Closing_1_agent_count']=$sponsor['Closing_1_agent_count'] +1;
 					$sponsor['is_agent']=true;
 					$sponsor['Self_Agent_Income']= 5000;
+					$sponsor->save();
+
+					// IF This sponsor is made agent right now then update ansesstors agent count and further working
+					$agent=$sponsor;
+
+					$agent_sp = $this->add('Model_Distributor')->tryLoad($agent['sponsor_id']);
+					if($agent_sp->loaded()){
+						$agent_sp['Closing_1_agent_count'] = $agent_sp['Closing_1_agent_count'] + 1;
+						$agent_sp->save();
+
+						$agent_sp_sp =$this->add('Model_Distributor')->tryLoad($agent_sp['sponsor_id']);
+						if($agent_sp_sp->loaded()){
+							$agent_sp_sp['Closing_2_agent_count'] = $agent_sp_sp['Closing_2_agent_count'] + 1;
+							$agent_sp_sp['Total_2_agent_count'] = $agent_sp_sp['Total_2_agent_count'] + 1;
+							if($agent_sp_sp['Total_2_agent_count'] == 16 ) 
+								$agent_sp_sp['salary_month']=1;
+							$agent_sp_sp->save();
+
+							$agent_sp_sp_sp=$this->add('Model_Distributor')->tryLoad($agent_sp_sp['sponsor_id']);
+							if($agent_sp_sp_sp->loaded()){
+								$agent_sp_sp_sp['Closing_3_agent_count'] = $agent_sp_sp_sp['Closing_3_agent_count'] + 1;
+								$agent_sp_sp_sp->save();
+							}
+
+						}
+
+					}
+
 				}
-				$sponsor->save();
-
-				$Level_1_sponsor= $this->add('Model_Distributor');
-				$Level_1_sponsor->tryLoadAny($this['sponsor_id']);
-
-				if($Level_1_sponsor->loaded()){
-
-
-					$Level_1_sponsor['Total_members_in_down']=$Level_1_sponsor["Total_members_in_down"]+1;
-
-				}
-
-
-
-
-
-
-
-
-
-
-
-
 			}
 
-
-
-
+		}
 	}
-}
 
 	function afterSave(){
 		if($this->recall('inserted',false)){
