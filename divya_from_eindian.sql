@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 04, 2012 at 02:25 PM
+-- Generation Time: Oct 05, 2012 at 09:05 AM
 -- Server version: 5.5.24
 -- PHP Version: 5.3.10-1ubuntu3.2
 
@@ -292,6 +292,27 @@ INSERT INTO `jos_xstaff` (`id`, `username`, `password`, `AccessLevel`) VALUES
 CREATE TABLE IF NOT EXISTS `jos_xtreedetails` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sponsor_id` int(11) DEFAULT NULL,
+  `Closing_1_agent_count` int(11) DEFAULT NULL,
+  `Total_members_in_down` int(11) DEFAULT NULL,
+  `Closing_2_agent_count` int(11) DEFAULT NULL,
+  `Closing_3_agent_count` int(11) DEFAULT NULL,
+  `salary_month` int(11) DEFAULT '0',
+  `is_level_2_agents_completed` tinyint(4) DEFAULT '0',
+  `Self_Agent_Income` int(11) DEFAULT '0',
+  `Level_1_Agent_Income` int(11) DEFAULT '0',
+  `Level_2_Agent_Income` int(11) DEFAULT '0',
+  `Level_3_Agent_Income` int(11) DEFAULT '0',
+  `Salary_Income` int(11) DEFAULT '0',
+  `Royalty_Income` int(11) DEFAULT '0',
+  `Total_Income` int(11) DEFAULT '0',
+  `TDS` float DEFAULT '0',
+  `Admin_Charge` float DEFAULT '0',
+  `Net_Amount` int(11) DEFAULT '0',
+  `is_new` int(11) DEFAULT '1',
+  `Joining_Date` datetime DEFAULT NULL,
+  `is_panvarified` tinyint(4) DEFAULT NULL,
+  `is_agent` tinyint(4) DEFAULT NULL,
+  `jos_xtreedetailscol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

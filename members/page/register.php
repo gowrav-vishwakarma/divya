@@ -66,14 +66,14 @@ class page_register extends Page {
 
 			$sponsor=$this->add('Model_Distributor');
 			$sponsor->load($su->id);
-			if($sponsor['Total_1_Count'] == 12)
+			if($sponsor['Total_members_in_down'] == 4)
 				$form->displayError('sponsor_id',"There is no space available under this user");
 
-			$aliascheck=$this->add('Model_Distributor');
-			$aliascheck->addCondition('alias',$form->get('alias'));
-			$aliascheck->tryLoadAny();
-			if($aliascheck->loaded())
-				$form->displayError('alias',"This page name is already taken, try different one");
+			// $aliascheck=$this->add('Model_Distributor');
+			// $aliascheck->addCondition('alias',$form->get('alias'));
+			// $aliascheck->tryLoadAny();
+			// if($aliascheck->loaded())
+			// 	$form->displayError('alias',"This page name is already taken, try different one");
 
 			if(! ($pinid=$this->add('Model_Pin')->usePin($form->get('pin'))))
 				$form->displayError('pin','Pin Error, try again or another pin.');

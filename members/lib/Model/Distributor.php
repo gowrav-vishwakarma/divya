@@ -10,7 +10,7 @@ class Model_Distributor extends Model_Table{
 		$this->hasOne('Pin','pin_id');
 
 		$this->hasMany('SponsoredDistributors','sponsor_id');
-		$this->hasMany('Closings','distributor_id');
+		// $this->hasMany('Closings','distributor_id');
 		$this->hasMany('Page','alias_for_id');
 
 		$details = $this->join('jos_xpersonaldetails.distributor_id');
@@ -34,31 +34,25 @@ class Model_Distributor extends Model_Table{
 
 		$this->addField('is_panvarified')->type('boolean')->defaultValue(false);//m->system(true);
 
-		$this->addField('Closing_1_Count')->defaultValue(0);
-		$this->addField('Closing_2_Count')->defaultValue(0);
-		$this->addField('Closing_3_Count')->defaultValue(0);
-		$this->addField('Total_1_Count')->defaultValue(0)->system(true);
-		$this->addField('Total_2_Count')->defaultValue(0)->system(true);
-		$this->addField('Total_3_Count')->defaultValue(0)->system(true);
-		$this->addField('is_level_1_completed')->type("boolean")->defaultValue(false)->system(true);
-		$this->addField('is_level_2_completed')->type("boolean")->defaultValue(false)->system(true);
-		$this->addField('is_level_3_completed')->type("boolean")->defaultValue(false)->system(true);
-		$this->addField('Performance_2_Bonus')->defaultValue(0)->system(true);
-		$this->addField('Performance_3_Bonus')->defaultValue(0)->system(true);
-		$this->addField('Salary_1_months')->defaultValue(0)->system(true);
-		$this->addField('Salary_2_months')->defaultValue(0)->system(true);
-		$this->addField('Level_1_Income')->defaultValue(0)->system(true);
-		$this->addField('Level_2_Income')->defaultValue(0)->system(true);
-		$this->addField('Level_3_Income')->defaultValue(0)->system(true);
-		$this->addField('Salary_1_Income')->defaultValue(0)->system(true);
-		$this->addField('Salary_2_Income')->defaultValue(0)->system(true);
-		$this->addField('TotalAmount')->defaultValue(0)->system(true);
-		$this->addField('TDS')->defaultValue(0)->system(true);
-		$this->addField('AdminCharge')->defaultValue(0)->system(true);
-		$this->addField('NetAmount')->defaultValue(0)->system(true);
-		$this->addField('JoiningDate')->defaultValue(date('Y-m-d'))->system(true);
-		$this->addField('Performance_Given')->defaultValue(0)->system(true);
-		$this->addField('Path')->system(true);
+		$this->addField('Total_members_in_down');
+		$this->addField('Closing_1_agent_count');
+		$this->addField('Closing_2_agent_count');
+		$this->addField('Closing_3_agent_count');
+		$this->addField('salary_month');
+		$this->addField('is_level_2_agents_completed');
+		$this->addField('Self_Agent_Income');
+		$this->addField('Level_1_Agent_Income');
+		$this->addField('Level_2_Agent_Income');
+		$this->addField('Level_3_Agent_Income');
+		$this->addField('Salary_Income');
+		$this->addField('Royalty_Income');
+		$this->addField('Total_Income');
+		$this->addField('TDS');
+		$this->addField('Admin_Charge');
+		$this->addField('Net_Amount');
+		$this->addField('is_new');
+		$this->addField('Joining_Date');
+		$this->addField('is_panvarified');
 
 		$this->addExpression('name')->set('concat(fullname," (",username,")" )');
 		
@@ -73,56 +67,43 @@ class Model_Distributor extends Model_Table{
 			$sponsor->tryLoad($this['sponsor_id']);
 			if($sponsor->loaded()){
 
-				$sponsor['Closing_1_Count'] = $sponsor['Closing_1_Count'] + 1;
-				$sponsor['Total_1_Count'] = $sponsor['Total_1_Count'] + 1;
-
-				$this['Path']= $sponsor['Path']. '.'.$sponsor['Total_1_Count'];
-
-				if($sponsor['Total_1_Count'] == 12) $sponsor['is_level_1_completed']=true;
-
+				$sponsor['Total_members_in_down'] = $sponsor['Total_members_in_down'] + 1;
+				// path
+				if($sponsor['Total_members_in_down']==4){
+					$sponsor['Closing_1_agent_count']=$sponsor['Closing_1_agent_count'] +1;
+					$sponsor['is_agent']=true;
+					$sponsor['Self_Agent_Income']= 5000;
+				}
 				$sponsor->save();
 
-				$sp_sp=$this->add('Model_Distributor');
-				$sp_sp->tryLoad($sponsor['sponsor_id']);
-				if($sp_sp->loaded()){
-					$sp_sp['Closing_2_Count'] = $sp_sp['Closing_2_Count'] + 1;
-					$sp_sp['Total_2_Count'] = $sp_sp['Total_2_Count'] + 1;
-					if($sp_sp['Total_2_Count'] == 144) {
-						$sp_sp['is_level_2_completed']=true;
-						$sp_sp['Salary_1_months']=1;
-					}
-					$sp_sp->save();
-				
+				$Level_1_sponsor= $this->add('Model_Distributor');
+				$Level_1_sponsor->tryLoadAny($this['sponsor_id']);
 
-					$sp_sp_3=$this->add('Model_Distributor');
-					$sp_sp_3->tryLoad($sp_sp['sponsor_id']);
-					if($sp_sp_3->loaded()){
-						$sp_sp_3['Closing_3_Count'] = $sp_sp_3['Closing_3_Count'] + 1;
-						$sp_sp_3['Total_3_Count'] = $sp_sp_3['Total_3_Count'] + 1;
-						if($sp_sp_3['Total_3_Count'] == 1728) {
-							$sp_sp_3['is_level_3_completed']=true;
-							$sp_sp_3['Salary_2_months']=1;
-						}
-						$sp_sp_3->save();
-					}
+				if($Level_1_sponsor->loaded()){
+
+
+					$Level_1_sponsor['Total_members_in_down']=$Level_1_sponsor["Total_members_in_down"]+1;
+
 				}
+
+
+
+
+
+
+
+
+
+
+
+
 			}
 
-			$this['pin_id']=$this->recall('pin_id');
-
-			$this['is_panvarified'] = (strlen($this['pan_no'])==10)? true : false;
-
-			
-
-			$this->memorize('inserted',true);
-			$this['is_panvarified'] = (strlen($this['pan_no'])==10)? true : false;
-		}else{
-			// UPDATING MY PAGE
-		}	
 
 
 
 	}
+}
 
 	function afterSave(){
 		if($this->recall('inserted',false)){
@@ -130,5 +111,4 @@ class Model_Distributor extends Model_Table{
 			$this->forget('inserted');
 		}
 	}
-
 }

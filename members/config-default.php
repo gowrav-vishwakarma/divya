@@ -1,7 +1,7 @@
 <?php
 
 $config['atk']['base_path']='./atk4/';
-$config['dsn']='mysql://root:winserver@localhost/eindian';
+$config['dsn']='mysql://root:winserver@localhost/divya';
 
 $config['url_postfix']='';
 $config['url_prefix']='?page=';
