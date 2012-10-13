@@ -4,16 +4,20 @@
 		"selected_items":
 		[
 			[
+				"spons",
+				"sponsor_id"
+			],
+			[
+				"spon",
+				"sponsor"
+			],
+			[
 				"agen",
 				"agent_sp"
 			],
 			[
 				"Closing",
 				"Closing_1_agent_count"
-			],
-			[
-				"spon",
-				"sponsor_username"
 			],
 			[
 				"Joi",
@@ -52,10 +56,6 @@
 				"page_alias"
 			],
 			[
-				"spons",
-				"sponsor"
-			],
-			[
 				"rate",
 				"rate_field"
 			],
@@ -87,7 +87,31 @@
 			"file": "members/lib/Model/Distributor.php",
 			"settings":
 			{
-				"buffer_size": 4214,
+				"buffer_size": 4690,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "members/lib/Frontend.php",
+			"settings":
+			{
+				"buffer_size": 3236,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "members/templates/default/shared.html",
+			"settings":
+			{
+				"buffer_size": 1928,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "members/page/register.php",
+			"settings":
+			{
+				"buffer_size": 3445,
 				"line_ending": "Unix"
 			}
 		}
@@ -291,6 +315,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"is_agent",
 			"dropdown",
 			"closing_down_sales_factor",
 			"Your",
@@ -335,7 +360,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -343,15 +368,15 @@
 					"file": "members/lib/Model/Distributor.php",
 					"settings":
 					{
-						"buffer_size": 4214,
+						"buffer_size": 4690,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3770,
-								3770
+								3234,
+								3234
 							]
 						],
 						"settings":
@@ -360,7 +385,89 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1170.0,
+						"translation.y": 1012.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "members/lib/Frontend.php",
+					"settings":
+					{
+						"buffer_size": 3236,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1451,
+								1451
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 524.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "members/templates/default/shared.html",
+					"settings":
+					{
+						"buffer_size": 1928,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								84,
+								84
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "members/page/register.php",
+					"settings":
+					{
+						"buffer_size": 3445,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1989,
+								1989
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 144.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -414,6 +521,18 @@
 		"selected_items":
 		[
 			[
+				"pageres",
+				"page/register.php"
+			],
+			[
+				"shared.html",
+				"templates/default/shared.html"
+			],
+			[
+				"fron",
+				"lib/Frontend.php"
+			],
+			[
 				"model",
 				"lib/Model/Distributor.php"
 			],
@@ -444,10 +563,6 @@
 			[
 				"modelpage",
 				"lib/Model/Page.php"
-			],
-			[
-				"pageres",
-				"page/register.php"
 			],
 			[
 				"modeldistr",
@@ -916,14 +1031,6 @@
 			[
 				"modelonl",
 				"lib/Model/OnlyMyLedgers.php"
-			],
-			[
-				"menuacc",
-				"lib/Menu/AccountHeads.php"
-			],
-			[
-				"modelegall",
-				"lib/Model/LedgerAll.php"
 			]
 		],
 		"width": 0.0
@@ -933,6 +1040,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"e-indiamem",
+				"/var/www/e-indian/eindian-members.sublime-project"
+			],
 			[
 				"divyaadmin",
 				"/var/www/divya/divya-admin.sublime-project"

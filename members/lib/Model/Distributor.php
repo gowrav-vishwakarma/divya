@@ -11,7 +11,7 @@ class Model_Distributor extends Model_Table{
 
 		$this->hasMany('SponsoredDistributors','sponsor_id');
 		// $this->hasMany('Closings','distributor_id');
-		$this->hasMany('Page','alias_for_id');
+		// $this->hasMany('Page','alias_for_id');
 
 		$details = $this->join('jos_xpersonaldetails.distributor_id');
 
@@ -29,31 +29,34 @@ class Model_Distributor extends Model_Table{
         $details->addField('username')->mandatory("Username is must to give");
         $details->addField('password')->display(array('form'=> 'password'))->mandatory("Password is must to give");
 
-        $page=$this->join('jos_xpages.alias_for_id');
-        $page->addField('alias')->mandatory('You must give a name to your page');
+        // $page=$this->join('jos_xpages.alias_for_id');
+        // $page->addField('alias')->mandatory('You must give a name to your page');
 
 		$this->addField('is_panvarified')->type('boolean')->defaultValue(false);//m->system(true);
 
-		$this->addField('Total_members_in_down');
-		$this->addField('Closing_1_agent_count');
-		$this->addField('Closing_2_agent_count');
-		$this->addField('Total_2_agent_count');
-		$this->addField('Closing_3_agent_count');
-		$this->addField('salary_month');
-		$this->addField('is_level_2_agents_completed');
-		$this->addField('Self_Agent_Income');
-		$this->addField('Level_1_Agent_Income');
-		$this->addField('Level_2_Agent_Income');
-		$this->addField('Level_3_Agent_Income');
-		$this->addField('Salary_Income');
-		$this->addField('Royalty_Income');
-		$this->addField('Total_Income');
-		$this->addField('TDS');
-		$this->addField('Admin_Charge');
-		$this->addField('Net_Amount');
-		$this->addField('is_new');
+		$this->addField('Total_members_in_down')->defaultValue(0);
+		$this->addField('Closing_1_agent_count')->defaultValue(0);
+		$this->addField('Closing_2_agent_count')->defaultValue(0);
+		$this->addField('Total_2_agent_count')->defaultValue(0);
+		$this->addField('Closing_3_agent_count')->defaultValue(0);
+		$this->addField('salary_month')->defaultValue(0);
+		$this->addField('is_level_2_agents_completed')->defaultValue(0);
+		$this->addField('Self_Agent_Income')->defaultValue(0);
+		$this->addField('Level_1_Agent_Income')->defaultValue(0);
+		$this->addField('Level_2_Agent_Income')->defaultValue(0);
+		$this->addField('Level_3_Agent_Income')->defaultValue(0);
+		$this->addField('Salary_Income')->defaultValue(0);
+		$this->addField('Royalty_Income')->defaultValue(0);
+		$this->addField('Total_Income')->defaultValue(0);
+		$this->addField('TDS')->defaultValue(0);
+		$this->addField('Admin_Charge')->defaultValue(0);
+		$this->addField('Net_Amount')->defaultValue(0);
+
+		$this->addField('is_new')->type('boolean')->defaultValue(true);
+		$this->addField('is_agent')->type('boolean')->defaultValue(false);
 		$this->addField('Joining_Date');
-		$this->addField('is_panvarified');
+		$this->addField('LastCarryAmount')->defaultValue(0);
+		$this->addField('ClosingCarryAmount')->defaultValue(0);
 
 		$this->addExpression('name')->set('concat(fullname," (",username,")" )');
 		
@@ -63,7 +66,6 @@ class Model_Distributor extends Model_Table{
 
 	function beforeSave(){
 		if(!$this->loaded()){ //INSERTING NEW
-			
 			$sponsor=$this->add('Model_Distributor');
 			$sponsor->tryLoad($this['sponsor_id']);
 			if($sponsor->loaded()){
@@ -73,7 +75,6 @@ class Model_Distributor extends Model_Table{
 				if($sponsor['Total_members_in_down']==4){
 					$sponsor['is_agent']=true;
 					$sponsor['Self_Agent_Income']= 5000;
-					$sponsor->save();
 
 					// IF This sponsor is made agent right now then update ansesstors agent count and further working
 					$agent=$sponsor;
@@ -102,6 +103,7 @@ class Model_Distributor extends Model_Table{
 					}
 
 				}
+				$sponsor->save();
 			}
 
 		}

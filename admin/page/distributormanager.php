@@ -19,7 +19,7 @@ class page_distributormanager extends Page{
 			$grid->js(null,$grid->js()->univ()->successMessage("Pan Status Updated"))->reload()->execute();
 		}
 
-		$grid->setModel('Distributor',array('name','address','mobile_no','page_alias','fathers_name','pan_no','is_panvarified','username','password'));
+		$grid->setModel('Distributor',array('name','address','mobile_no','fathers_name','pan_no','is_panvarified','username','password'));
 		$grid->addColumn('Button','varifypan');
 		$grid->addQuickSearch(array('name','mobile_no','pan_no'));
 		$grid->addColumn('expander','edit');
@@ -37,7 +37,7 @@ function page_edit(){
 		$form->addClass('ui-state-highlight');
 		$form->addStyle('padding','20px');
 
-		$form->setModel($m,array('fullname','address','mobile_no','alias','fathers_name','pan_no','is_panvarified','username','password'));
+		$form->setModel($m,array('fullname','address','mobile_no','fathers_name','pan_no','is_panvarified','username','password'));
 		$form->addSubmit('Update');
 
 		if($form->isSubmitted()){
@@ -49,13 +49,13 @@ function page_edit(){
 			if($uc->loaded())
 				$form->displayError('username','This is used username, try another');
 
-			$ac=$this->add('Model_Page');
-			$ac->addCondition('alias',$form->get('alias'));
-			$ac->addCondition('alias_for_id','<>',$form->model->id);
+			// $ac=$this->add('Model_Page');
+			// $ac->addCondition('alias',$form->get('alias'));
+			// $ac->addCondition('alias_for_id','<>',$form->model->id);
 
-			$ac->tryLoadAny();
-			if($ac->loaded())
-				$form->displayError('alias','This is a used alias, use another');
+			// $ac->tryLoadAny();
+			// if($ac->loaded())
+			// 	$form->displayError('alias','This is a used alias, use another');
 
 			$form->update();
 

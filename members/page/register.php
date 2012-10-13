@@ -67,7 +67,7 @@ class page_register extends Page {
 			$sponsor=$this->add('Model_Distributor');
 			$sponsor->load($su->id);
 			if($sponsor['Total_members_in_down'] == 4)
-				$form->displayError('sponsor_id',"There is no space available under this user");
+				$form->displayError('sponsor_username',"There is no space available under this user");
 
 			// $aliascheck=$this->add('Model_Distributor');
 			// $aliascheck->addCondition('alias',$form->get('alias'));

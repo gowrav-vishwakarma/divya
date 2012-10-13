@@ -27,17 +27,17 @@ class page_resetall extends Page {
 		$pin->save();
 
 		$this->query("
-			INSERT INTO `eindian`.`jos_xtreedetails` (`id`, `sponsor_id`, `Closing_1_Count`, `Closing_2_Count`, `Closing_3_Count`, `Total_1_Count`, `Total_2_Count`, `Total_3_Count`, `is_level_1_completed`, `is_level_2_completed`, `is_level_3_completed`, `Salary_1_months`, `Salary_2_months`, `Level_2_Income`, `Level_1_Income`, `Level_3_Income`, `Performance_2_Bonus`, `Salary_1_Income`, `Salary_2_Income`, `TotalAmount`, `TDS`, `AdminCharge`, `NetAmount`, `JoiningDate`, `pin_id`, `Performance_3_Bonus`, `is_panvarified`, `Performance_Given`, `Path`) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2012-10-01', 1, 0, 0, 0,'0');
+			INSERT INTO `divya`.`jos_xtreedetails` (`id`, `sponsor_id`, `Closing_1_agent_count`, `Total_members_in_down`, `Closing_2_agent_count`, `Total_2_agent_count`, `Closing_3_agent_count`, `salary_month`, `is_level_2_agents_completed`, `Self_Agent_Income`, `Level_1_Agent_Income`, `Level_2_Agent_Income`, `Level_3_Agent_Income`, `Salary_Income`, `Royalty_Income`, `Total_Income`, `TDS`, `Admin_Charge`, `Net_Amount`, `is_new`, `Joining_Date`, `is_panvarified`, `is_agent`, `LastCarryAmount`, `ClosingCarryAmount`) VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2012-10-01', 0, 0,0,0);
 			");
 
 		$this->query("
-			INSERT INTO `eindian`.`jos_xpersonaldetails` (`id`, `fullname`, `address`, `mobile_no`, `distributor_id`, `username`, `password`, `page_alias`, `fathers_name`, `pan_no`, `bank_name`, `bank_branch`, `bank_account_no`) VALUES (0, 'root', 'root', '123', 1, 'root', 'root', 'root', 'root', '', '', '', '');
+			INSERT INTO `divya`.`jos_xpersonaldetails` (`id`, `fullname`, `address`, `mobile_no`, `distributor_id`, `username`, `password`, `page_alias`, `fathers_name`, `pan_no`, `bank_name`, `bank_branch`, `bank_account_no`) VALUES (0, 'root', 'address', '1234567890', 1, 'root', 'root', 'root', 'fname', '1234567890', 'a', 'b', 'c');
 			");
 
-		$this->query("INSERT INTO jos_xpages (id,distributor_id,alias) VALUES(0,1,'root')");
+		// $this->query("INSERT INTO jos_xpages (id,distributor_id,alias) VALUES(0,1,'root')");
 
 		$staff=$this->add('Model_Staff');
-		$staff['username']="root";
+		$staff['username']="admin";
 		$staff['password']='admin';
 		$staff->save();
 

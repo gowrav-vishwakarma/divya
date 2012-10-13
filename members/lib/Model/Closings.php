@@ -7,17 +7,20 @@ class Model_Closings extends Model_Table{
 			$this->hasOne('Distributor','distributor_id');
 
 			$this->addField('name');
-			$this->addField('Level_1_Income');
-			$this->addField('Level_2_Income');
-			$this->addField('Level_3_Income');
-			$this->addField('Closing_1_Count');
-			$this->addField('Closing_2_Count');
-			$this->addField('Closing_3_Count');
+			$this->addField('Level_1_Agent_Income');
+			$this->addField('Level_2_Agent_Income');
+			$this->addField('Level_3_Agent_Income');
+			$this->addField('Closing_1_agent_Count');
+			$this->addField('Closing_2_agent_Count');
+			$this->addField('Closing_3_agent_Count');
 			$this->addField('Salary_Income');
 			$this->addField('Royalty_Income');
 			$this->addField('TotalAmount');
 			$this->addField('TDS');
 			$this->addField('AdminCharge');
 			$this->addField('NetAmount');
+			$this->addField('LastCarryAmount');
+			$this->addField('ClosingCarryAmount');
+
 		}
 }

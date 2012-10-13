@@ -32,6 +32,9 @@ class page_closings_main extends Page {
 
 	function doClosing($closing_name,$is_monthly){
 		//initialize//
+
+		$this->query("UPDATE jos_xtreedetails SET CarryAmount= 0");
+
 		//calculate LevelIncome from 1st to 3rd level
 		
 		$this->query("UPDATE
@@ -89,7 +92,7 @@ class page_closings_main extends Page {
 			$this->query("UPDATE
 							jos_xtreedetails
 						SET
-							TotalAmount = 	Level_1_Agent_Income + Level_2_Agent_Income + Level_3_Agent_Income + Self_Agent_Income + 	Salary_Income + Royalty_Income  
+							TotalAmount = 	LastCarryAmount + Level_1_Agent_Income + Level_2_Agent_Income + Level_3_Agent_Income + Self_Agent_Income + 	Salary_Income + Royalty_Income  
 						");
 
 		//calculate TDS
@@ -98,7 +101,8 @@ class page_closings_main extends Page {
 						SET
 							TDS = TotalAmount * 10 /100.0
 						WHERE
-							is_panvarified=1
+							is_panvarified=1 AND
+							is_agent = 1
 						");
 			
 			$this->query("UPDATE
@@ -106,7 +110,8 @@ class page_closings_main extends Page {
 						SET
 							TDS = TotalAmount * 20 /100.0
 						WHERE
-							is_panvarified=0
+							is_panvarified=0 AND
+							is_agent = 1
 						");
 
 
@@ -114,7 +119,9 @@ class page_closings_main extends Page {
 			$this->query("UPDATE
 							jos_xtreedetails
 						SET
-							AdminCharge = TotalAmount * 5 /100.0
+							AdminCharge = TotalAmount * 5 /100.0 
+						WHERE
+							is_agent = 1
 						");
 
 		// calculate Net Amount
@@ -122,7 +129,19 @@ class page_closings_main extends Page {
 							jos_xtreedetails
 						SET
 							NetAmount = TotalAmount - (TDS + AdminCharge)
+						WHERE
+							is_agent = 1
 						");
+		// Calculate Carry
+			$this->query("UPDATE
+							jos_xtreedetails
+						SET
+							CarryAmount = TotalAmount,
+							TotalAmount = 0,
+						WHERE
+							is_agent = 0
+						");
+
 		//save closing
 
 			$this->query("
@@ -143,13 +162,20 @@ class page_closings_main extends Page {
 						TDS,
 						AdminCharge,
 						NetAmount,
-						'$closing_name'
+						'$closing_name',
+						LastCarryAmount,
+						ClosingCarryAmount
 						FROM 
 						jos_xtreedetails
 					)
 				");
 
 		//closing zeros
+			$this->query("UPDATE
+							jos_xtreedetails
+						SET
+							LastCarryAmount = CarryAmount
+						");
 			$this->query("UPDATE
 							jos_xtreedetails
 						SET
@@ -164,7 +190,8 @@ class page_closings_main extends Page {
 							TotalAmount = 0,
 							TDS = 0,
 							AdminCharge = 0,
-							NetAmount = 0
+							NetAmount = 0,
+							CarryAmount=0
 				");
 
 		}

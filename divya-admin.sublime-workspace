@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"Carry",
+				"CarryAmount"
+			],
+			[
+				"Tota",
+				"TotalAmount"
+			],
+			[
+				"fun",
+				"fundAmount"
+			],
+			[
+				"roya",
+				"royaltyachievers_count"
+			],
+			[
+				"Total",
+				"Total_2_agent_count"
+			],
+			[
+				"Ro",
+				"Royalty_Income"
+			],
+			[
+				"salar",
+				"salary_month"
+			],
+			[
 				"spon",
 				"sponsor_username"
 			],
@@ -75,6 +103,46 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "admin/page/closings/main.php",
+			"settings":
+			{
+				"buffer_size": 4536,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/lib/Model/Distributor.php",
+			"settings":
+			{
+				"buffer_size": 4588,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/page/closings/report.php",
+			"settings":
+			{
+				"buffer_size": 768,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/lib/Model/Closings.php",
+			"settings":
+			{
+				"buffer_size": 756,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "admin/page/resetall.php",
+			"settings":
+			{
+				"buffer_size": 2306,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -128,6 +196,14 @@
 	},
 	"file_history":
 	[
+		"/var/www/divya/admin/page/resetall.php",
+		"/var/www/divya/admin/page/closings/main.php",
+		"/var/www/divya/admin/lib/Frontend.php",
+		"/var/www/divya/admin/lib/Model/Distributor.php",
+		"/var/www/divya/admin/page/distributormanager.php",
+		"/var/www/divya/admin/page/pin/report.php",
+		"/var/www/divya/admin/lib/Model/Pin.php",
+		"/var/www/divya/admin/lib/Model/Closings.php",
 		"/var/www/e-indian/members/page/register.php",
 		"/var/www/e-indian/members/lib/Model/Distributor.php",
 		"/var/www/e-indian/members/lib/Frontend.php",
@@ -247,15 +323,7 @@
 		"/var/www/ffm/pos/page/groups/my.php",
 		"/var/www/ffm/pos/page/groups/all.php",
 		"/var/www/ffm/pos/page/vouchers/jv.php",
-		"/var/www/ffm/pos/page/group/all.php",
-		"/var/www/ffm/pos/page/group/my.php",
-		"/var/www/ffm/pos/page/voucher.php",
-		"/var/www/ffm/pos/page/ledgers.php",
-		"/var/www/ffm/pos/page/group.php",
-		"/var/www/ffm/pos/page/voucher/sales.php",
-		"/var/www/ffm/pos/page/voucher/jv.php",
-		"/var/www/ffm/pos/page/voucher/dashboard.php",
-		"/var/www/ffm/pos/page/voucher/purchase.php"
+		"/var/www/ffm/pos/page/group/all.php"
 	],
 	"find":
 	{
@@ -275,6 +343,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"carrAmount",
 			"dropdown",
 			"closing_down_sales_factor",
 			"Your",
@@ -319,8 +388,144 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "admin/page/closings/main.php",
+					"settings":
+					{
+						"buffer_size": 4536,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3399,
+								3399
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2441.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "admin/lib/Model/Distributor.php",
+					"settings":
+					{
+						"buffer_size": 4588,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3115,
+								3128
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1048.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "admin/page/closings/report.php",
+					"settings":
+					{
+						"buffer_size": 768,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "admin/lib/Model/Closings.php",
+					"settings":
+					{
+						"buffer_size": 756,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								750,
+								750
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "admin/page/resetall.php",
+					"settings":
+					{
+						"buffer_size": 2306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								743,
+								743
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 47.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -370,12 +575,60 @@
 		"selected_items":
 		[
 			[
-				"front",
-				"lib/Frontend.php"
+				"pagerese",
+				"page/resetall.php"
+			],
+			[
+				"modeldist",
+				"lib/Model/Distributor.php"
+			],
+			[
+				"modelclosin",
+				"lib/Model/Closings.php"
+			],
+			[
+				"pageclosinrepo",
+				"page/closings/report.php"
 			],
 			[
 				"modeldis",
 				"lib/Model/Distributor.php"
+			],
+			[
+				"pageclosinmain",
+				"page/closings/main.php"
+			],
+			[
+				"pageclosingma",
+				"page/closings/main.php"
+			],
+			[
+				"pagepin",
+				"page/pin/report.php"
+			],
+			[
+				"modelpin",
+				"lib/Model/Pin.php"
+			],
+			[
+				"pagedisman",
+				"page/distributormanager.php"
+			],
+			[
+				"modelclosing",
+				"lib/Model/Closings.php"
+			],
+			[
+				"modedis",
+				"lib/Model/Distributor.php"
+			],
+			[
+				"pageclo",
+				"page/closings/main.php"
+			],
+			[
+				"front",
+				"lib/Frontend.php"
 			],
 			[
 				"pageregi",
@@ -486,10 +739,6 @@
 				"lib/View/PointRate.php"
 			],
 			[
-				"modeldist",
-				"lib/Model/Distributor.php"
-			],
-			[
 				"viewpoint",
 				"lib/View/PointRate.php"
 			],
@@ -520,10 +769,6 @@
 			[
 				"viewdist",
 				"templates/default/view/distributordetails.html"
-			],
-			[
-				"modedis",
-				"lib/Model/Distributor.php"
 			],
 			[
 				"from",
@@ -840,46 +1085,6 @@
 			[
 				"modelonlymyle",
 				"lib/Model/OnlyMyLedgers.php"
-			],
-			[
-				"pageledmy",
-				"page/ledgers/my.php"
-			],
-			[
-				"modelledall",
-				"lib/Model/LedgerAll.php"
-			],
-			[
-				"pageleall",
-				"page/ledgers/all.php"
-			],
-			[
-				"modelle",
-				"lib/Model/Ledger.php"
-			],
-			[
-				"pagele",
-				"page/ledgers/all.php"
-			],
-			[
-				"pagelemy",
-				"page/ledgers/my.php"
-			],
-			[
-				"modelonl",
-				"lib/Model/OnlyMyLedgers.php"
-			],
-			[
-				"menuacc",
-				"lib/Menu/AccountHeads.php"
-			],
-			[
-				"modelegall",
-				"lib/Model/LedgerAll.php"
-			],
-			[
-				"viewcrud",
-				"atk4/lib/View/CRUD.php"
 			]
 		],
 		"width": 0.0
@@ -889,6 +1094,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"divyamem",
+				"/var/www/divya/divya-members.sublime-project"
+			],
 			[
 				"eindme",
 				"/var/www/e-indian/e-indian-my.sublime-project"

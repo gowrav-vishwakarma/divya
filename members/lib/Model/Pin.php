@@ -6,6 +6,11 @@ class Model_Pin extends Model_Table{
 		$this->addField('Pin');
 		$this->hasOne('Distributor', 'assigned_to');
 		$this->addField('is_used')->type('boolean')->defaultValue(false);
+
+		// $this->addExpression('Used_For')->set(function ($m,$q){
+		// 	return $m->_dsql()->del('field')->field('GROUP_CONCAT("name")')->where('pin_id',$m->getField('id'));
+		// });
+
 	}
 
 	function generatePins($no_of_pins){
