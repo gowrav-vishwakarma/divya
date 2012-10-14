@@ -3,12 +3,12 @@
  * Consult documentation on http://agiletoolkit.org/learn 
  */
 class Frontend extends ApiFrontend {
+
     function init(){
         parent::init();
         // Keep this if you are going to use database on all pages
         $this->dbConnect();
         $this->requires('atk','4.2.0');
-
         // This will add some resources from atk4-addons, which would be located
         // in atk4-addons subdirectory.
         $this->addLocation('atk4-addons',array(
@@ -33,11 +33,11 @@ class Frontend extends ApiFrontend {
             ;
 
         // If you wish to restrict actess to your pages, use BasicAuth class
-        $auth=$this->add('BasicAuth');
-        $auth->setModel('Staff','username','password');
+        // $auth=$this->add('BasicAuth');
+        // $auth->setModel('Staff','username','password');
 //            ->allow('demo','demo')
             // use check() and allowPage for white-list based auth checking
-            $auth->check();
+            // $auth->check();
             // ;
 
         // This method is executed for ALL the peages you are going to add,
@@ -59,7 +59,7 @@ class Frontend extends ApiFrontend {
             ;
 
         $this->addLayout('UserMenu');
-        $this->add('H1',null,'logo')->set('Welcome Admin' );
+        $this->add('H1',null,'logo')->set('Welcome To Divya Admin Page' );
     }
     
     function layout_UserMenu(){

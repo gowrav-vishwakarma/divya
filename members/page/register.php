@@ -18,7 +18,8 @@ class page_register extends Page {
 
 		$form->setModel('Distributor',array('fullname','fathers_name','address','mobile_no','pan_no','bank_name','bank_branch','bank_account_no','bank_IFSC','username', 'password','alias'));
 
-		$form->addField('line','sponsor_username')->setNotNull();
+		$form->addField('line','sponsor_username');
+		 // ->setNotNull();
 
 		// $form->addField('dropdown','leg')->setValueList(array(null=>"Select Leg", 'A' => 'Leg A', 'B' => 'Leg B', 'C'=>'Leg C','D'=>'Leg D'))->setNotNull();
 		$form->addField('password','repassword')->validateNotNull("Re Password is must");
@@ -62,11 +63,11 @@ class page_register extends Page {
 				$form->displayError('TNC','You must Agree with Terms and Conditions');
 
 			if($form->get('password') != $form->get('repassword'))
-				$formorm->displayError('repassword',"Pasword must match");
+				$form->displayError('repassword',"Pasword must match");
 
 			$sponsor=$this->add('Model_Distributor');
 			$sponsor->load($su->id);
-			if($sponsor['Total_members_in_down'] == 4)
+			if($sponsor['Total_members_in_down'] == 6)
 				$form->displayError('sponsor_username',"There is no space available under this user");
 
 			// $aliascheck=$this->add('Model_Distributor');
@@ -80,6 +81,7 @@ class page_register extends Page {
 
 
 			$form->getModel()->memorize('pin_id',$pinid);
+			$form->model['pin_id']=$pinid;
 				$form->update();
 			}catch(Exception $e){
 				$this->api->db->rollback();
